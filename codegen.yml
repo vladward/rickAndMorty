@@ -1,0 +1,23 @@
+overwrite: true
+schema: 'https://rickandmortyapi.com/graphql'
+documents:
+  [
+      'src/graphql/queries/*',
+      'src/graphql/mutations/*',
+      'src/graphql/fragments/*',
+  ]
+generates:
+  ./src/graphql/generated/graphql.tsx:
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+        - eslint --fix
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true
+  ./graphql.schema.json:
+      plugins:
+        - 'introspection'
