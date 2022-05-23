@@ -36,11 +36,6 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
         for (const graphQLError of graphQLErrors) {
             console.log('graphQLError: ', graphQLError);
 
-            if (graphQLError.message === 'Context creation failed: INVALID_TOKEN') {
-                localStorage.removeItem('token');
-                sessionStorage.removeItem('token');
-            }
-
             useErrorsStore.setState({
                 hasError: true,
                 error: graphQLError,
