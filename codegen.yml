@@ -1,11 +1,6 @@
 overwrite: true
 schema: 'https://rickandmortyapi.com/graphql'
-documents:
-  [
-      'src/graphql/queries/*',
-      'src/graphql/mutations/*',
-      'src/graphql/fragments/*',
-  ]
+documents: 'src/**/*.{js,jsx,ts,tsx,graphql}'
 generates:
   ./src/graphql/generated/graphql.tsx:
     hooks:
