@@ -1,10 +1,15 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -19,7 +24,7 @@ export type Scalars = {
 
 export enum CacheControlScope {
   Private = 'PRIVATE',
-  Public = 'PUBLIC'
+  Public = 'PUBLIC',
 }
 
 export type Character = {
@@ -154,49 +159,40 @@ export type Query = {
   locationsByIds?: Maybe<Array<Maybe<Location>>>;
 };
 
-
 export type QueryCharacterArgs = {
   id: Scalars['ID'];
 };
-
 
 export type QueryCharactersArgs = {
   filter?: InputMaybe<FilterCharacter>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryCharactersByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
 
-
 export type QueryEpisodeArgs = {
   id: Scalars['ID'];
 };
-
 
 export type QueryEpisodesArgs = {
   filter?: InputMaybe<FilterEpisode>;
   page?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryEpisodesByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
-
 
 export type QueryLocationArgs = {
   id: Scalars['ID'];
 };
 
-
 export type QueryLocationsArgs = {
   filter?: InputMaybe<FilterLocation>;
   page?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>;
@@ -207,39 +203,114 @@ export type CharactersQueryVariables = Exact<{
   filter: FilterCharacter;
 }>;
 
-
-export type CharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null, species?: string | null, type?: string | null, gender?: string | null, image?: string | null, created?: string | null } | null> | null } | null };
+export type CharactersQuery = {
+  __typename?: 'Query';
+  characters?: {
+    __typename?: 'Characters';
+    info?: {
+      __typename?: 'Info';
+      count?: number | null;
+      pages?: number | null;
+      next?: number | null;
+      prev?: number | null;
+    } | null;
+    results?: Array<{
+      __typename?: 'Character';
+      id?: string | null;
+      name?: string | null;
+      status?: string | null;
+      species?: string | null;
+      type?: string | null;
+      gender?: string | null;
+      image?: string | null;
+      created?: string | null;
+    } | null> | null;
+  } | null;
+};
 
 export type CharacterQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
-
-export type CharacterQuery = { __typename?: 'Query', character?: { __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null, species?: string | null, type?: string | null, gender?: string | null, image?: string | null, created?: string | null, origin?: { __typename?: 'Location', id?: string | null, name?: string | null, type?: string | null, dimension?: string | null, created?: string | null, residents: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null } | null> } | null, location?: { __typename?: 'Location', id?: string | null, name?: string | null, type?: string | null, dimension?: string | null, created?: string | null, residents: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null } | null> } | null, episode: Array<{ __typename?: 'Episode', id?: string | null, name?: string | null, air_date?: string | null, episode?: string | null, created?: string | null, characters: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null } | null> } | null> } | null };
-
+export type CharacterQuery = {
+  __typename?: 'Query';
+  character?: {
+    __typename?: 'Character';
+    id?: string | null;
+    name?: string | null;
+    status?: string | null;
+    species?: string | null;
+    type?: string | null;
+    gender?: string | null;
+    image?: string | null;
+    created?: string | null;
+    origin?: {
+      __typename?: 'Location';
+      id?: string | null;
+      name?: string | null;
+      type?: string | null;
+      dimension?: string | null;
+      created?: string | null;
+      residents: Array<{
+        __typename?: 'Character';
+        id?: string | null;
+        name?: string | null;
+        status?: string | null;
+      } | null>;
+    } | null;
+    location?: {
+      __typename?: 'Location';
+      id?: string | null;
+      name?: string | null;
+      type?: string | null;
+      dimension?: string | null;
+      created?: string | null;
+      residents: Array<{
+        __typename?: 'Character';
+        id?: string | null;
+        name?: string | null;
+        status?: string | null;
+      } | null>;
+    } | null;
+    episode: Array<{
+      __typename?: 'Episode';
+      id?: string | null;
+      name?: string | null;
+      air_date?: string | null;
+      episode?: string | null;
+      created?: string | null;
+      characters: Array<{
+        __typename?: 'Character';
+        id?: string | null;
+        name?: string | null;
+        status?: string | null;
+      } | null>;
+    } | null>;
+  } | null;
+};
 
 export const CharactersDocument = gql`
-    query characters($page: Int, $filter: FilterCharacter!) {
-  characters(page: $page, filter: $filter) {
-    info {
-      count
-      pages
-      next
-      prev
-    }
-    results {
-      id
-      name
-      status
-      species
-      type
-      gender
-      image
-      created
+  query characters($page: Int, $filter: FilterCharacter!) {
+    characters(page: $page, filter: $filter) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        status
+        species
+        type
+        gender
+        image
+        created
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useCharactersQuery__
@@ -258,67 +329,80 @@ export const CharactersDocument = gql`
  *   },
  * });
  */
-export function useCharactersQuery(baseOptions: Apollo.QueryHookOptions<CharactersQuery, CharactersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CharactersQuery, CharactersQueryVariables>(CharactersDocument, options);
-      }
-export function useCharactersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CharactersQuery, CharactersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CharactersQuery, CharactersQueryVariables>(CharactersDocument, options);
-        }
+export function useCharactersQuery(
+  baseOptions: Apollo.QueryHookOptions<CharactersQuery, CharactersQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CharactersQuery, CharactersQueryVariables>(
+    CharactersDocument,
+    options,
+  );
+}
+export function useCharactersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CharactersQuery, CharactersQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CharactersQuery, CharactersQueryVariables>(
+    CharactersDocument,
+    options,
+  );
+}
 export type CharactersQueryHookResult = ReturnType<typeof useCharactersQuery>;
 export type CharactersLazyQueryHookResult = ReturnType<typeof useCharactersLazyQuery>;
-export type CharactersQueryResult = Apollo.QueryResult<CharactersQuery, CharactersQueryVariables>;
+export type CharactersQueryResult = Apollo.QueryResult<
+  CharactersQuery,
+  CharactersQueryVariables
+>;
 export const CharacterDocument = gql`
-    query character($id: ID!) {
-  character(id: $id) {
-    id
-    name
-    status
-    species
-    type
-    gender
-    origin {
+  query character($id: ID!) {
+    character(id: $id) {
       id
       name
+      status
+      species
       type
-      dimension
-      residents {
+      gender
+      origin {
         id
         name
-        status
+        type
+        dimension
+        residents {
+          id
+          name
+          status
+        }
+        created
+      }
+      location {
+        id
+        name
+        type
+        dimension
+        residents {
+          id
+          name
+          status
+        }
+        created
+      }
+      image
+      episode {
+        id
+        name
+        air_date
+        episode
+        characters {
+          id
+          name
+          status
+        }
+        created
       }
       created
     }
-    location {
-      id
-      name
-      type
-      dimension
-      residents {
-        id
-        name
-        status
-      }
-      created
-    }
-    image
-    episode {
-      id
-      name
-      air_date
-      episode
-      characters {
-        id
-        name
-        status
-      }
-      created
-    }
-    created
   }
-}
-    `;
+`;
 
 /**
  * __useCharacterQuery__
@@ -336,14 +420,27 @@ export const CharacterDocument = gql`
  *   },
  * });
  */
-export function useCharacterQuery(baseOptions: Apollo.QueryHookOptions<CharacterQuery, CharacterQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CharacterQuery, CharacterQueryVariables>(CharacterDocument, options);
-      }
-export function useCharacterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CharacterQuery, CharacterQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CharacterQuery, CharacterQueryVariables>(CharacterDocument, options);
-        }
+export function useCharacterQuery(
+  baseOptions: Apollo.QueryHookOptions<CharacterQuery, CharacterQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CharacterQuery, CharacterQueryVariables>(
+    CharacterDocument,
+    options,
+  );
+}
+export function useCharacterLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CharacterQuery, CharacterQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CharacterQuery, CharacterQueryVariables>(
+    CharacterDocument,
+    options,
+  );
+}
 export type CharacterQueryHookResult = ReturnType<typeof useCharacterQuery>;
 export type CharacterLazyQueryHookResult = ReturnType<typeof useCharacterLazyQuery>;
-export type CharacterQueryResult = Apollo.QueryResult<CharacterQuery, CharacterQueryVariables>;
+export type CharacterQueryResult = Apollo.QueryResult<
+  CharacterQuery,
+  CharacterQueryVariables
+>;
