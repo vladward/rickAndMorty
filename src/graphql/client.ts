@@ -1,10 +1,7 @@
-import { ApolloClient, ApolloLink, InMemoryCache, split } from '@apollo/client';
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { getMainDefinition } from '@apollo/client/utilities';
 import { createUploadLink } from 'apollo-upload-client';
 import create from 'zustand';
-
-import { API_HOST } from '../constants';
 
 type ErrorType = {
   hasError: boolean;
@@ -19,15 +16,8 @@ export const useErrorsStore = create<ErrorType>(() => ({
 }));
 
 const httpLink = createUploadLink({
-  uri: API_HOST,
+  uri: 'https://rickandmortyapi.com/graphql',
 });
-
-const splitLink = split(({ query }) => {
-  const definition = getMainDefinition(query);
-  return (
-    definition.kind === 'OperationDefinition' && definition.operation === 'subscription'
-  );
-}, httpLink);
 
 const errorLink = onError(({ networkError, graphQLErrors }) => {
   if (graphQLErrors) {
@@ -52,6 +42,6 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
 });
 
 export const client = new ApolloClient({
-  link: ApolloLink.from([errorLink, splitLink]),
+  link: ApolloLink.from([errorLink, httpLink]),
   cache: new InMemoryCache(),
 });
