@@ -10,3 +10,28 @@ export const PATHS = {
   episodes: '/episodes',
   episode: '/episodes/:episodesId',
 };
+
+export const HEADER_LINKS: HeaderLinksTypes[] = [
+  { name: 'Characters', link: PATHS.characters },
+  { name: 'Episodes', link: PATHS.episodes },
+  { name: 'Locations', link: PATHS.locations },
+];
+
+export const EXTERNAL_LINKS: GeneralLinksType = {
+  github: 'https://github.com/vladward',
+};
+
+export const PreloaderSizes = {
+  s: '25px',
+  m: '60px',
+  l: '100px',
+};
+
+type HeaderLinksTypes = {
+  name: string;
+  link: string;
+};
+
+type GeneralLinksType = {
+  [key: string]: string;
+};
