@@ -1,4 +1,5 @@
 import './index.css';
+import './fonts/get_schwifty.ttf';
 
 import { ApolloProvider } from '@apollo/client';
 import React from 'react';
