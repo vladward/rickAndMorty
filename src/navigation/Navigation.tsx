@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Header } from '../components';
+import { Background, Footer, Header } from '../components';
 import { routes } from '../constants/routes';
 import { useStyles } from './styles';
 
@@ -11,7 +11,11 @@ const RouteWrapper: FC<RouteWrapperType> = ({ children }) => {
   return (
     <Box className={classes.wrapper}>
       <Header />
-      <Container className={classes.container}>{children}</Container>
+      <Background />
+      <Container disableGutters className={classes.container}>
+        {children}
+      </Container>
+      <Footer />
     </Box>
   );
 };
