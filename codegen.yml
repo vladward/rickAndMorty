@@ -1,8 +1,13 @@
 overwrite: true
 schema: 'https://rickandmortyapi.com/graphql'
-documents: 'src/**/*.{js,jsx,ts,tsx,graphql}'
+documents: [
+    'src/graphql/queries/*',
+    'src/graphql/mutations/*',
+    'src/graphql/fragments/*',
+    'src/graphql/subscriptions/*',
+]
 generates:
-  ./src/graphql/generated/graphql.tsx:
+  src/graphql/generated/graphql.tsx:
     hooks:
       afterOneFileWrite:
         - prettier --write
