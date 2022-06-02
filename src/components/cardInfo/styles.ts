@@ -8,6 +8,10 @@ export const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
+  cardInfoStatus: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   cardInfoTitle: {
     padding: '10px 0',
   },

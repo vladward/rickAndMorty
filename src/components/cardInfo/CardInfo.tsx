@@ -31,25 +31,30 @@ export const CardInfo: FC<CardInfoType> = ({
       <Typography gutterBottom variant={'h5'} component={'div'}>
         {name}
       </Typography>
-      <Typography variant={'subtitle2'} style={{ display: 'flex', alignItems: 'center' }}>
+      <Typography variant={'subtitle2'} className={styles.cardInfoStatus}>
         {onGetStatus(status)}
         {species}
       </Typography>
       <Typography className={styles.cardInfoTitle}>
-        <span className={styles.cardInfoTitleText}>Last known location:</span>{' '}
+        <Box component='span' className={styles.cardInfoTitleText}>
+          Last known location:
+        </Box>{' '}
         {locationName}
       </Typography>
       <Typography className={styles.cardInfoTitle}>
-        <span className={styles.cardInfoTitleText}>First seen in:</span> {originName}
+        <Box component='span' className={styles.cardInfoTitleText}>
+          First seen in:
+        </Box>{' '}
+        {originName}
       </Typography>
     </Box>
   );
 };
 
 type CardInfoType = {
-  name: string | null | undefined;
-  status: string | null | undefined;
-  species: string | null | undefined;
-  locationName: string | null | undefined;
-  originName: string | null | undefined;
+  name?: string | null | undefined;
+  status?: string | null | undefined;
+  species?: string | null | undefined;
+  locationName?: string | null | undefined;
+  originName?: string | null | undefined;
 };

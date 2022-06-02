@@ -1,5 +1,5 @@
-export const API_HOST: string = process.env.API_HOST as string;
-export const BASE_URL: string = process.env.BASE_URL as string;
+export const API_HOST: string = process.env.REACT_APP_API_HOST as string;
+export const BASE_URL: string = process.env.REACT_APP_BASE_URL as string;
 
 export const PATHS = {
   home: '/',
