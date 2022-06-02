@@ -1,2 +1,2 @@
-export * from './characters.gql';
 export * from './character.gql';
+export * from './characters.gql';
