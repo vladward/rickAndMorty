@@ -3,6 +3,8 @@ import { onError } from '@apollo/client/link/error';
 import { createUploadLink } from 'apollo-upload-client';
 import create from 'zustand';
 
+import { API_HOST } from '../constants/constants';
+
 type ErrorType = {
   hasError: boolean;
   error: any;
@@ -16,7 +18,7 @@ export const useErrorsStore = create<ErrorType>(() => ({
 }));
 
 const httpLink = createUploadLink({
-  uri: 'https://rickandmortyapi.com/graphql',
+  uri: API_HOST,
 });
 
 const errorLink = onError(({ networkError, graphQLErrors }) => {
