@@ -1,16 +1,11 @@
 import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
-  home: {
+  characters: {
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
-    minHeight: '350px',
   },
 });

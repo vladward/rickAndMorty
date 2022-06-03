@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
 
+import { CustomCardType } from '../customCard/CustomCard';
 import { useStyles } from './styles';
 
 export const CardInfo: FC<CardInfoType> = ({
@@ -51,10 +52,4 @@ export const CardInfo: FC<CardInfoType> = ({
   );
 };
 
-type CardInfoType = {
-  name?: string | null | undefined;
-  status?: string | null | undefined;
-  species?: string | null | undefined;
-  locationName?: string | null | undefined;
-  originName?: string | null | undefined;
-};
+type CardInfoType = Omit<CustomCardType, 'margin'>;

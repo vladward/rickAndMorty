@@ -10,9 +10,10 @@ export const CustomCard: FC<CustomCardType> = ({
   species,
   locationName,
   originName,
+  margin = '0 6px',
 }) => {
   return (
-    <Card sx={{ width: '300px', margin: '0 6px' }}>
+    <Card sx={{ width: '300px', maxHeight: '510px', margin: { margin } }}>
       <CardActionArea>
         <CardMedia
           component={'img'}
@@ -35,11 +36,12 @@ export const CustomCard: FC<CustomCardType> = ({
   );
 };
 
-type CustomCardType = {
-  name: string | null | undefined;
-  image: string | null | undefined;
-  status: string | null | undefined;
-  species: string | null | undefined;
-  locationName: string | null | undefined;
-  originName: string | null | undefined;
+export type CustomCardType = {
+  name?: string | null;
+  image?: string | null;
+  status?: string | null;
+  species?: string | null;
+  locationName?: string | null;
+  originName?: string | null;
+  margin?: string | number;
 };

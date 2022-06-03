@@ -13,7 +13,7 @@ export const useStyles = makeStyles({
     alignItems: 'center',
   },
   cardInfoTitle: {
-    padding: '10px 0',
+    paddingTop: '10px 0',
   },
   cardInfoTitleText: {
     fontWeight: '600',
