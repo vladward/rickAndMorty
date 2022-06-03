@@ -12,7 +12,11 @@ const RouteWrapper: FC<RouteWrapperType> = ({ children }) => {
     <Box className={classes.wrapper}>
       <Header />
       <Background />
-      <Container disableGutters className={classes.container}>
+      <Container
+        sx={{ '&.MuiContainer-root': { maxWidth: 'none' } }}
+        disableGutters
+        className={classes.container}
+      >
         {children}
       </Container>
       <Footer />

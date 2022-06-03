@@ -2,14 +2,15 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
   header: {
+    maxWidth: '1660px',
     height: '45px',
-    margin: '0',
+    margin: '0 auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   nav: {
-    width: '90%',
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',

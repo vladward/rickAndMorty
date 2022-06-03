@@ -10,9 +10,10 @@ export const CustomCard: FC<CustomCardType> = ({
   species,
   locationName,
   originName,
+  margin = '0 6px',
 }) => {
   return (
-    <Card sx={{ width: '300px', margin: '0 6px' }}>
+    <Card sx={{ width: '300px', maxHeight: '510px', margin: { margin } }}>
       <CardActionArea>
         <CardMedia
           component={'img'}

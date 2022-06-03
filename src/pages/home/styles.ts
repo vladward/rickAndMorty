@@ -8,12 +8,6 @@ export const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    color: 'white',
-    textAlign: 'center',
-    padding: '30px 0',
-    fontFamily: 'RickAndMorty!important',
-  },
   content: {
     display: 'flex',
     justifyContent: 'center',

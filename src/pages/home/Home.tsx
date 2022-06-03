@@ -1,7 +1,7 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 
-import { CustomCard, RequestHandler } from '../../components';
+import { BlockTitle, CustomCard, RequestHandler } from '../../components';
 import { useCharactersByIdsQuery } from '../../graphql/generated/graphql';
 import { useStyles } from './styles';
 
@@ -16,9 +16,7 @@ export const Home: FC = () => {
 
   return (
     <Box className={styles.home}>
-      <Typography variant='h3' className={styles.title}>
-        Main characters
-      </Typography>
+      <BlockTitle title='Main characters' />
 
       <Box className={styles.content}>
         <RequestHandler loading={loading}>
