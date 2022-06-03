@@ -13,11 +13,6 @@ export const CHARACTER_FRAGMENT = gql`
       name
       type
       dimension
-      residents {
-        id
-        name
-        status
-      }
       created
     }
     location {
@@ -25,11 +20,6 @@ export const CHARACTER_FRAGMENT = gql`
       name
       type
       dimension
-      residents {
-        id
-        name
-        status
-      }
       created
     }
     image

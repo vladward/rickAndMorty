@@ -198,6 +198,56 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
 
+export type CharacterFragmentFragment = {
+  __typename?: 'Character';
+  id?: string | null;
+  name?: string | null;
+  status?: string | null;
+  species?: string | null;
+  type?: string | null;
+  gender?: string | null;
+  image?: string | null;
+  created?: string | null;
+  origin?: {
+    __typename?: 'Location';
+    id?: string | null;
+    name?: string | null;
+    type?: string | null;
+    dimension?: string | null;
+    created?: string | null;
+  } | null;
+  location?: {
+    __typename?: 'Location';
+    id?: string | null;
+    name?: string | null;
+    type?: string | null;
+    dimension?: string | null;
+    created?: string | null;
+  } | null;
+  episode: Array<{
+    __typename?: 'Episode';
+    id?: string | null;
+    name?: string | null;
+    air_date?: string | null;
+    episode?: string | null;
+    created?: string | null;
+    characters: Array<{
+      __typename?: 'Character';
+      id?: string | null;
+      name?: string | null;
+      status?: string | null;
+    } | null>;
+  } | null>;
+};
+
+export type InfoFragmentFragment = {
+  __typename?: 'Info';
+  count?: number | null;
+  pages?: number | null;
+  next?: number | null;
+  prev?: number | null;
+};
+
 export type CharacterQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -221,12 +271,6 @@ export type CharacterQuery = {
       type?: string | null;
       dimension?: string | null;
       created?: string | null;
-      residents: Array<{
-        __typename?: 'Character';
-        id?: string | null;
-        name?: string | null;
-        status?: string | null;
-      } | null>;
     } | null;
     location?: {
       __typename?: 'Location';
@@ -235,12 +279,6 @@ export type CharacterQuery = {
       type?: string | null;
       dimension?: string | null;
       created?: string | null;
-      residents: Array<{
-        __typename?: 'Character';
-        id?: string | null;
-        name?: string | null;
-        status?: string | null;
-      } | null>;
     } | null;
     episode: Array<{
       __typename?: 'Episode';
@@ -292,12 +330,6 @@ export type CharactersQuery = {
         type?: string | null;
         dimension?: string | null;
         created?: string | null;
-        residents: Array<{
-          __typename?: 'Character';
-          id?: string | null;
-          name?: string | null;
-          status?: string | null;
-        } | null>;
       } | null;
       location?: {
         __typename?: 'Location';
@@ -306,12 +338,6 @@ export type CharactersQuery = {
         type?: string | null;
         dimension?: string | null;
         created?: string | null;
-        residents: Array<{
-          __typename?: 'Character';
-          id?: string | null;
-          name?: string | null;
-          status?: string | null;
-        } | null>;
       } | null;
       episode: Array<{
         __typename?: 'Episode';
@@ -362,12 +388,6 @@ export type CharactersByIdsQuery = {
       type?: string | null;
       dimension?: string | null;
       created?: string | null;
-      residents: Array<{
-        __typename?: 'Character';
-        id?: string | null;
-        name?: string | null;
-        status?: string | null;
-      } | null>;
     } | null;
     episode: Array<{
       __typename?: 'Episode';
@@ -386,55 +406,59 @@ export type CharactersByIdsQuery = {
   } | null> | null;
 };
 
-export const CharacterDocument = gql`
-  query character($id: ID!) {
-    character(id: $id) {
+export const CharacterFragmentFragmentDoc = gql`
+  fragment characterFragment on Character {
+    id
+    name
+    status
+    species
+    type
+    gender
+    origin {
       id
       name
-      status
-      species
       type
-      gender
-      origin {
+      dimension
+      created
+    }
+    location {
+      id
+      name
+      type
+      dimension
+      created
+    }
+    image
+    episode {
+      id
+      name
+      air_date
+      episode
+      characters {
         id
         name
-        type
-        dimension
-        residents {
-          id
-          name
-          status
-        }
-        created
-      }
-      location {
-        id
-        name
-        type
-        dimension
-        residents {
-          id
-          name
-          status
-        }
-        created
-      }
-      image
-      episode {
-        id
-        name
-        air_date
-        episode
-        characters {
-          id
-          name
-          status
-        }
-        created
+        status
       }
       created
     }
+    created
   }
+`;
+export const InfoFragmentFragmentDoc = gql`
+  fragment infoFragment on Info {
+    count
+    pages
+    next
+    prev
+  }
+`;
+export const CharacterDocument = gql`
+  query character($id: ID!) {
+    character(id: $id) {
+      ...characterFragment
+    }
+  }
+  ${CharacterFragmentFragmentDoc}
 `;
 
 /**
@@ -481,59 +505,15 @@ export const CharactersDocument = gql`
   query characters($page: Int, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
       info {
-        count
-        pages
-        next
-        prev
+        ...infoFragment
       }
       results {
-        id
-        name
-        status
-        species
-        type
-        gender
-        origin {
-          id
-          name
-          type
-          dimension
-          residents {
-            id
-            name
-            status
-          }
-          created
-        }
-        location {
-          id
-          name
-          type
-          dimension
-          residents {
-            id
-            name
-            status
-          }
-          created
-        }
-        image
-        episode {
-          id
-          name
-          air_date
-          episode
-          characters {
-            id
-            name
-            status
-          }
-          created
-        }
-        created
+        ...characterFragment
       }
     }
   }
+  ${InfoFragmentFragmentDoc}
+  ${CharacterFragmentFragmentDoc}
 `;
 
 /**
@@ -580,47 +560,10 @@ export type CharactersQueryResult = Apollo.QueryResult<
 export const CharactersByIdsDocument = gql`
   query charactersByIds($ids: [ID!]!) {
     charactersByIds(ids: $ids) {
-      id
-      name
-      status
-      species
-      type
-      gender
-      origin {
-        id
-        name
-        type
-        dimension
-        created
-      }
-      location {
-        id
-        name
-        type
-        dimension
-        residents {
-          id
-          name
-          status
-        }
-        created
-      }
-      image
-      episode {
-        id
-        name
-        air_date
-        episode
-        characters {
-          id
-          name
-          status
-        }
-        created
-      }
-      created
+      ...characterFragment
     }
   }
+  ${CharacterFragmentFragmentDoc}
 `;
 
 /**
