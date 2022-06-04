@@ -2,9 +2,7 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
   header: {
-    maxWidth: '1660px',
     height: '45px',
-    margin: '0 auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

@@ -17,5 +17,9 @@ export const useStyles = makeStyles({
   text: {
     position: 'absolute',
     top: '30%',
+    userSelect: 'none',
+    '-webkit-text-stroke': '3px #388028',
+    // '-webkit-text-d': '3px black',
+    '-webkit-text-fill-color': '#3acbd6',
   },
 });
