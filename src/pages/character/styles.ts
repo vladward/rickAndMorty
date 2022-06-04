@@ -25,11 +25,6 @@ export const useStyles = makeStyles({
     paddingBottom: '20px',
     borderRadius: '20px !important',
   },
-  characterContentInfo: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   characterCardInfo: {
     display: 'flex',
     flexDirection: 'column',

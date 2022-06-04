@@ -55,20 +55,18 @@ export const Character = () => {
                 status={character?.status}
                 gender={character?.gender}
               />
-              <Box className={styles.characterContentInfo}>
-                <Box className={styles.characterCardInfo}>
-                  <OriginCard
-                    name={character?.origin?.name}
-                    type={character?.origin?.type}
-                    dimension={character?.origin?.dimension}
-                  />
-                  <LocationCard
-                    name={character?.location?.name}
-                    type={character?.location?.type}
-                    dimension={character?.location?.dimension}
-                  />
-                  <EpisodesCard episode={character?.episode} />
-                </Box>
+              <Box className={styles.characterCardInfo}>
+                <OriginCard
+                  name={character?.origin?.name}
+                  type={character?.origin?.type}
+                  dimension={character?.origin?.dimension}
+                />
+                <LocationCard
+                  name={character?.location?.name}
+                  type={character?.location?.type}
+                  dimension={character?.location?.dimension}
+                />
+                <EpisodesCard episode={character?.episode} />
               </Box>
             </Card>
           </Paper>
