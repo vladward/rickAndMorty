@@ -17,7 +17,6 @@ export const Home: FC = () => {
   return (
     <Box className={styles.home}>
       <BlockTitle title='Main characters' />
-
       <Box className={styles.content}>
         <RequestHandler loading={loading}>
           {data?.charactersByIds?.map((character, index) => {
@@ -25,12 +24,13 @@ export const Home: FC = () => {
               return (
                 <CustomCard
                   key={index}
+                  id={character.id}
                   name={character.name}
                   image={character.image}
                   status={character.status}
                   species={character.species}
                   locationName={character.location?.name}
-                  originName={character.origin?.name}
+                  originName={character.episode[0]?.name}
                 />
               );
             }

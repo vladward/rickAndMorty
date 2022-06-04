@@ -3,10 +3,23 @@ import { FC } from 'react';
 
 import { useStyles } from './styles';
 
-export const BlockTitle: FC<{ title: string }> = ({ title }) => {
+export const BlockTitle: FC<{
+  title: string;
+  color?: string;
+  fontWeight?: string | number;
+  fontSize?: string | number;
+}> = ({ title, color, fontWeight, fontSize }) => {
   const styles = useStyles();
   return (
-    <Typography variant='h3' className={styles.title}>
+    <Typography
+      color={color}
+      component='span'
+      className={styles.title}
+      fontWeight={fontWeight || 400}
+      fontSize={fontSize || '3rem'}
+      textTransform='capitalize'
+      fontFamily='Poppins'
+    >
       {title}
     </Typography>
   );

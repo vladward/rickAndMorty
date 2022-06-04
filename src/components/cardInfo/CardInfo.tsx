@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
 
+import { PersonStatus } from '../../utils/PersonStatus';
 import { CustomCardType } from '../customCard/CustomCard';
 import { useStyles } from './styles';
 
@@ -12,37 +13,25 @@ export const CardInfo: FC<CardInfoType> = ({
   originName,
 }) => {
   const styles = useStyles();
-  const onGetStatus = (status: string | null | undefined) => {
-    const statusStyles = {
-      background: status === 'Alive' ? 'green' : status === 'Dead' ? 'red' : 'gray',
-      borderRadius: '50%',
-      width: '10px',
-      height: '10px',
-      marginRight: '5px ',
-    };
-    return (
-      <Box className={styles.statusWrapper}>
-        <span style={statusStyles} />
-        {status}&nbsp;-&nbsp;
-      </Box>
-    );
-  };
   return (
     <Box className={styles.cardInfo}>
-      <Typography gutterBottom variant={'h5'} component={'div'}>
+      <Typography fontFamily='Poppins' gutterBottom variant={'h5'} component={'div'}>
         {name}
       </Typography>
-      <Typography variant={'subtitle2'} className={styles.cardInfoStatus}>
-        {onGetStatus(status)}
-        {species}
+      <Typography
+        fontFamily='Poppins'
+        variant={'subtitle2'}
+        className={styles.cardInfoStatus}
+      >
+        <PersonStatus status={status} species={species} />
       </Typography>
-      <Typography className={styles.cardInfoTitle}>
+      <Typography fontFamily='Poppins' className={styles.cardInfoTitle}>
         <Box component='span' className={styles.cardInfoTitleText}>
           Last known location:
         </Box>{' '}
         {locationName}
       </Typography>
-      <Typography className={styles.cardInfoTitle}>
+      <Typography fontFamily='Poppins' className={styles.cardInfoTitle}>
         <Box component='span' className={styles.cardInfoTitleText}>
           First seen in:
         </Box>{' '}

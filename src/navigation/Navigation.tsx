@@ -1,13 +1,14 @@
 import { Box, Container } from '@mui/material';
 import React, { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Background, Footer, Header } from '../components';
+import { PATHS } from '../constants/constants';
 import { routes } from '../constants/routes';
-import { useStyles } from './styles';
+import { navigationStyles } from './styles';
 
 const RouteWrapper: FC<RouteWrapperType> = ({ children }) => {
-  const classes = useStyles();
+  const classes = navigationStyles();
   return (
     <Box className={classes.wrapper}>
       <Header />
@@ -41,6 +42,7 @@ export const Navigation: FC = () => {
           />
         );
       })}
+      <Route path='*' element={<Navigate replace to={PATHS.home} />} />
     </Routes>
   );
 };

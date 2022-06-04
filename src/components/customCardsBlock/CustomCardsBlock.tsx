@@ -21,7 +21,7 @@ export const CustomCardsBlock: FC<{ inputValue: string }> = ({ inputValue }) => 
     <Box className={styles.content}>
       <RequestHandler loading={loading}>
         <Masonry
-          breakpointCols={5}
+          breakpointCols={4}
           className={styles.myMasonryGrid}
           columnClassName={styles.myMasonryGridColumn}
         >
@@ -30,12 +30,13 @@ export const CustomCardsBlock: FC<{ inputValue: string }> = ({ inputValue }) => 
               return (
                 <Grid item key={index}>
                   <CustomCard
+                    id={character.id}
                     name={character.name}
                     image={character.image}
                     status={character.status}
                     species={character.species}
                     locationName={character.location?.name}
-                    originName={character.origin?.name}
+                    originName={character.episode[0]?.name}
                     margin={0}
                   />
                 </Grid>

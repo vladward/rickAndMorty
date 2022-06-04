@@ -6,7 +6,7 @@ import { Preloader } from '../preloader/Preloader';
 export const RequestHandler: FC<RequestHandlerType> = ({
   loading,
   error,
-  loaderColor,
+  loaderColor = 'green',
   loaderSize,
   fullScreen,
   children,

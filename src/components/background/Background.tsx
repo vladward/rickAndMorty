@@ -13,8 +13,10 @@ export const Background = () => {
         fontSize={150}
         fontWeight={'bold'}
         className={styles.text}
+        fontFamily='RickAndMorty'
+        color='#3acbd6'
       >
-        The Rick and Morty
+        Rick and Morty
       </Typography>
     </Box>
   );
