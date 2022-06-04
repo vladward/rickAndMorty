@@ -1,4 +1,4 @@
-import { Characters, Home } from '../pages';
+import { Character, Characters, Home } from '../pages';
 import { PATHS } from './constants';
 
 export const routes = [
@@ -10,10 +10,10 @@ export const routes = [
     path: PATHS.characters,
     component: Characters,
   },
-  // {
-  //   path: PATHS.character,
-  //   // component: Character,
-  // },
+  {
+    path: PATHS.character,
+    component: Character,
+  },
   // {
   //   path: PATHS.episodes,
   //   // component: Episodes,

@@ -1,7 +1,7 @@
 export const API_HOST: string = process.env.REACT_APP_API_HOST as string;
 export const BASE_URL: string = process.env.REACT_APP_BASE_URL as string;
 
-export const PATHS = {
+export const PATHS: GeneralLinksType = {
   home: '/',
   character: '/character/:characterId',
   characters: '/characters',
