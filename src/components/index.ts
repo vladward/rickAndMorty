@@ -10,3 +10,4 @@ export * from './icons';
 export * from './logo/Logo';
 export * from './preloader/Preloader';
 export * from './requestHandler/RequestHandler';
+export * from './titleWithDescription/TitleWithDescription';
