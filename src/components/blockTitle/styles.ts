@@ -5,6 +5,8 @@ export const useStyles = makeStyles({
     color: 'white',
     textAlign: 'center',
     padding: '30px 0',
-    fontFamily: 'RickAndMorty!important',
+    maxWidth: '1660px',
+    width: 'max-content',
+    margin: '0 auto !important',
   },
 });

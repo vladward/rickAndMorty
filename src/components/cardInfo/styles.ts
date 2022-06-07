@@ -4,10 +4,6 @@ export const useStyles = makeStyles({
   cardInfo: {
     height: '100%',
   },
-  statusWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-  },
   cardInfoStatus: {
     display: 'flex',
     alignItems: 'center',

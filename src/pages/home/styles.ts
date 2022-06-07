@@ -12,5 +12,6 @@ export const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     minHeight: '350px',
+    paddingBottom: '40px',
   },
 });
