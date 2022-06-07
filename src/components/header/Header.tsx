@@ -17,7 +17,11 @@ export const Header: FC = () => {
           <Logo />
           <Box className={styles.navLinks}>
             {HEADER_LINKS.map((link, index) => (
-              <Link key={index} to={link.link} className={styles.linkButton}>
+              <Link
+                key={`${index}${link.link}`}
+                to={link.link}
+                className={styles.linkButton}
+              >
                 {link.name}
               </Link>
             ))}
